@@ -1,0 +1,4 @@
+FROM java:8
+EXPOSE 9090
+ADD /build/libs/spring-boot-userservice-0.0.1-SNAPSHOT.jar spring-boot-userservice.jar
+ENTRYPOINT ["java", "-jar", "spring-boot-userservice.jar"]
