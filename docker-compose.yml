@@ -6,12 +6,12 @@ services:
     ports:
     - "8761:8761"
   configservice:
-    image: sprint-boot-config
+    image: spring-boot-config
     container_name: configservice
     ports:
     - "8888:8888"
   emailservice:
-    image: sprint-boot-emailservice
+    image: spring-boot-emailservice
     container_name: emailservice
     ports:
     - "8091:8091"
@@ -27,10 +27,14 @@ services:
   userservice:
     image: spring-boot-userservice
     container_name: userservice
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    depends_on:
+      - configservice
     ports:
     - "8090:8090"
   gateway:
-    image: spring-boot-gateway 
+    image: spring-boot-gateway
     container_name: gateway
     ports:
     - "8111:8111"
