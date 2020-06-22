@@ -1,0 +1,36 @@
+version: '3'
+services:
+  eurekaservice:
+    image: spring-boot-eurekaservice
+    container_name: eurekaservice
+    ports:
+    - "8761:8761"
+  configservice:
+    image: sprint-boot-config
+    container_name: configservice
+    ports:
+    - "8888:8888"
+  emailservice:
+    image: sprint-boot-emailservice
+    container_name: emailservice
+    ports:
+    - "8091:8091"
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGERS_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DATABASE: postgres
+    ports:
+    - "5432:5432"
+  userservice:
+    image: spring-boot-userservice
+    container_name: userservice
+    ports:
+    - "8090:8090"
+  gateway:
+    image: spring-boot-gateway 
+    container_name: gateway
+    ports:
+    - "8111:8111"
